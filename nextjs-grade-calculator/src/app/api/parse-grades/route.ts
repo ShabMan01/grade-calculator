@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
             error += data.toString();
         });
 
-        return new Promise((resolve) => {
+        return new Promise<Response>((resolve) => {
             python.on('close', (code) => {
                 if (code !== 0) {
                     console.error('Python script error:', error);

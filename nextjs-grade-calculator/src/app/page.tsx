@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
-import { HelpCircle, Copy, CheckIcon } from 'lucide-react'
+import { HelpCircle } from 'lucide-react'
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -237,7 +237,7 @@ export default function GradeCalculator() {
 
 
   const copyText = () => {
-    let eqs = document.querySelectorAll(".equationsTextbox");
+    const eqs = document.querySelectorAll(".equationsTextbox");
     let finalCopyString = "";
 
     eqs.forEach(div => {
@@ -245,7 +245,7 @@ export default function GradeCalculator() {
     });
 
     navigator.clipboard.writeText(finalCopyString).then(() => {
-      let btn = document.getElementById("copyButton");
+      const btn = document.getElementById("copyButton");
       
       if (btn) {
         const originalText = btn.textContent;

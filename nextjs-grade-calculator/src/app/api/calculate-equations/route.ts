@@ -3,7 +3,7 @@ import { spawn } from 'child_process';
 
 // const PYTHON_SCRIPT_PATH = process.env.PYTHON_SCRIPT_PATH || path.join(process.cwd(), 'app.py');
 
-export async function POST(req: NextRequest) {
+export async function POST(req: NextRequest): Promise<Response> {
     try {
         const { grades, types } = await req.json();
         
@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
             error += data.toString();
         });
 
-        return new Promise<Response>((resolve) => {
+        return new Promise((resolve) => {
             python.on('close', (code) => {
                 if (code !== 0) {
                     console.error('Python script error:', error);

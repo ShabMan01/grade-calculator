@@ -242,6 +242,19 @@ export default function GradeCalculator() {
 
             </CardContent>
         </Card>
+
+        <div className="flex-1 text-center">
+            <p className="text-sm text-neutral-500 m-4">Made by&nbsp;
+                <a
+                    href="https://github.com/ShabMan01"
+                    className="text-neutral-500 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Shabeer Manalai
+                </a>
+            </p>
+        </div>
 	</>
     )
 }

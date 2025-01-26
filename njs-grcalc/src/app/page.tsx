@@ -45,6 +45,15 @@ export default function GradeCalculator() {
         window.open('https://www.youtube.com/@shabman01', '_blank');
     }
 
+    const [copyButtonText, setCopyButtonText] = useState('Copy');
+    const handleCopy = () => {
+        const equationsText = state.equations.join('\n');
+        navigator.clipboard.writeText(equationsText).then(() => {
+            setCopyButtonText('Copied!');
+            setTimeout(() => setCopyButtonText('Copy'), 3000);
+        });
+    };
+
     return (
 	<>
 		<div className="flex justify-between items-center m-8">
@@ -57,7 +66,13 @@ export default function GradeCalculator() {
 		</div>
 
 		
-        <Card className="w-full max-w-4xl mx-auto">
+
+
+
+
+
+
+        <Card className="w-full max-w-4xl mx-auto mb-8">
             <CardContent className="space-y-6 mt-4">
                 {/* Step 1: SIS Data */}
                 {state.step >= 1 && (
@@ -72,8 +87,15 @@ export default function GradeCalculator() {
                         <Button onClick={handleSISSubmit} className="bg-green-500 hover:bg-green-600" disabled={!state.sisData}>
                             proceed
                         </Button>
+
+                        <hr className="border-gray-300 my-16" />
+
                     </div>
                 )}
+
+
+
+
 
                 {/* Step 2: Grade Exclusion */}
                 {state.step >= 2 && (
@@ -113,8 +135,15 @@ export default function GradeCalculator() {
                         <Button onClick={handleExclusionSubmit} className="bg-blue-500 hover:bg-blue-600">
                             proceed
                         </Button>
+
+                        <hr className="border-gray-300 my-16" />
+
                     </div>
                 )}
+
+
+
+
 
                 {/* Step 3: Types' Worth */}
                 {state.step >= 3 && (
@@ -149,8 +178,15 @@ export default function GradeCalculator() {
                         <Button onClick={handleTypesSubmit} className="bg-red-500 hover:bg-red-600">
                             proceed
                         </Button>
+
+                        <hr className="border-gray-300 my-16" />
+
                     </div>
                 )}
+
+
+
+
 
                 {/* Step 4: Your Equations & Next Steps */}
                 {state.step >= 4 && (
@@ -163,10 +199,17 @@ export default function GradeCalculator() {
                                 </div>
                             ))}
                         </div>
+
+                        <Button onClick={handleCopy} className="bg-purple-500 hover:bg-blue-600">
+                            {copyButtonText}
+                        </Button>
+
+                        <hr className="border-gray-300 my-16" />
+
                         <div className="space-y-2">
-                            <h4 className="font-medium">Next Steps:</h4>
+                            <h4 className="text-lg font-medium">Next Steps:</h4>
                             <ol className="list-decimal list-inside space-y-2">
-                                <li>Copy the equations above</li>
+                                <li>Copy the equations above.</li>
                                 <li>
                                     Go to Desmos (
                                     <a
@@ -177,14 +220,26 @@ export default function GradeCalculator() {
                                     >
                                         https://desmos.com/graphing
                                     </a>
-                                    ) and paste
+                                    ) and paste.
                                 </li>
-                                <li>Change numbers in the numerator to simulate what your grade would be</li>
-                                <li>Your grade at t is your grade (in %)</li>
+                                <li>Change numbers in the numerator to simulate what your grade would be.</li>
+                                <li>Your grade at <span className="font-mono">t</span> is your final grade (in %).</li>
                             </ol>
                         </div>
+
+                        <iframe
+                            title="Desmos Calculator"
+                            src="https://www.desmos.com/calculator"
+                            style={{ width: "100%", height: "500px", border: "0" }}
+                            allowFullScreen
+                        ></iframe>
+
                     </div>
                 )}
+
+
+
+
             </CardContent>
         </Card>
 	</>

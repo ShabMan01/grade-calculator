@@ -2,7 +2,9 @@ export interface Assignment {
     date: string
     name: string
     type: string
+    score: string
     points: string
+    notes: string
     excluded: boolean
   }
   

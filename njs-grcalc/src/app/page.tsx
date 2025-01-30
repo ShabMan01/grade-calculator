@@ -72,7 +72,7 @@ export default function GradeCalculator() {
 
 
 
-        <Card className="w-full max-w-4xl mx-auto mb-8">
+        <Card className="w-full max-w-6xl mx-auto mb-8">
             <CardContent className="space-y-6 mt-4">
                 {/* Step 1: SIS Data */}
                 {state.step >= 1 && (
@@ -107,7 +107,9 @@ export default function GradeCalculator() {
                                     <TableHead>date</TableHead>
                                     <TableHead>name</TableHead>
                                     <TableHead>type</TableHead>
+                                    <TableHead>score</TableHead>
                                     <TableHead>points</TableHead>
+                                    <TableHead>notes</TableHead>
                                     <TableHead>excluded?</TableHead>
                                 </TableRow>
                             </TableHeader>
@@ -117,7 +119,9 @@ export default function GradeCalculator() {
                                         <TableCell>{assignment.date}</TableCell>
                                         <TableCell>{assignment.name}</TableCell>
                                         <TableCell>{assignment.type}</TableCell>
+                                        <TableCell>{assignment.score}</TableCell>
                                         <TableCell>{assignment.points}</TableCell>
+                                        <TableCell>{assignment.notes}</TableCell>
                                         <TableCell>
                                             <Checkbox
                                                 checked={assignment.excluded}

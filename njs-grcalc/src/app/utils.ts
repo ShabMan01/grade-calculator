@@ -15,7 +15,9 @@ export function parseSISData(data: string): Assignment[] {
           date: date.trim(),
           name: name.trim(),
           type: type.trim(),
+          score: score.trim(),
           points: points.split("\t")[1]?.trim() || "0/0",
+          notes: points.split("\t")[2]?.trim() || "",
           excluded: false,
         })
       }

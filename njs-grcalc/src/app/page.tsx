@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { HelpCircle } from 'lucide-react'
 import { parseSISData, getUniqueTypes, generateEquations } from "./utils"
 import type { FormState, Assignment, GradeType } from "./types"
@@ -40,9 +41,11 @@ export default function GradeCalculator() {
         setState({ ...state, equations, step: 4 })
     }
 
+    const [isDialogOpen, setIsDialogOpen] = useState(false)
 	function openYouTubeTutorial() {
-        console.log('tutorail');
-        window.open('https://www.youtube.com/@shabman01', '_blank');
+        // console.log('tutorial');
+        // window.open('https://www.youtube.com/@shabman01', '_blank');
+        setIsDialogOpen(true);
     }
 
     const [copyButtonText, setCopyButtonText] = useState('Copy');
@@ -60,9 +63,32 @@ export default function GradeCalculator() {
 			<div className="flex-1 text-center">
 				<h1 className="text-2xl font-bold">grade calculator 👍</h1>
 			</div>
-			<Button variant="ghost" size="icon" className="rounded-full" onClick={openYouTubeTutorial}>
+			{/* <Button variant="ghost" size="icon" className="rounded-full" onClick={openYouTubeTutorial}>
 				<HelpCircle className="h-8 w-8" />
-			</Button>
+			</Button> */}
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogTrigger asChild>
+                    <Button variant="ghost" size="icon" className="rounded-full" onClick={openYouTubeTutorial}>
+                    <HelpCircle className="h-8 w-8" />
+                    </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[75rem]">
+                    <DialogHeader>
+                    <DialogTitle>Demo Video</DialogTitle>
+                    </DialogHeader>
+                    <div className="aspect-video">
+                    <iframe
+                        width="100%"
+                        height="100%"
+                        src="https://www.youtube.com/embed/9xwxFD4Kxhk?si=xyAV1yqC9DLuWnOt"
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    ></iframe>
+                    </div>
+                </DialogContent>
+                </Dialog>
 		</div>
 
 		
@@ -248,7 +274,7 @@ export default function GradeCalculator() {
         </Card>
 
         <div className="flex-1 text-center">
-            <p className="text-sm text-neutral-500 m-4">Made by&nbsp;
+            <p className="text-sm text-neutral-500 m-4">v1.0 ; Made by&nbsp;
                 <a
                     href="https://github.com/ShabMan01"
                     className="text-neutral-500 hover:underline"
